@@ -519,7 +519,7 @@
 
 
     <!-- START OF CUSTOM CSS OVERRIDES -->
-    <style>@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap');
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
     --primary-color: #000000;
@@ -537,10 +537,9 @@
 }
 
 body.main {
-    font-family: "Anuphan", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 9pt;
     line-height: 1.2;
-    color: #333333;
     margin-right: 5mm;
     margin: 0px 15px 0px 8px;
 }
@@ -564,15 +563,10 @@ header .page-header__container .page-header__container-label {
 }
 
 header .page-header__container .page-header__container-label .page-header__container-label-text {
-    font-style: italic;
     line-height: 1.2;
     font-size: 23pt;
     font-weight: 400;
     color: var(--primary-color);
-}
-
-h1 {
-    font-style: italic;
 }
 
 div.addressline {
@@ -596,33 +590,23 @@ div.recipient {
 
 div.descbox {
     position: absolute;
-    top: 8mm;
+    top: 3mm;
     right: 2mm;
     width: 65mm;
 }
 
 div.descbox table tr td {
-    width: 40%;
+    width: 50%;
     word-wrap: anywhere;
-    padding: 0.5mm 0.5mm; /* Reduced padding */
+    padding: 0.4mm 0.5mm; /* Reduced padding */
 }
 
 div.descbox table tr:first-child td{
     font-size: 11pt;
-    font-style: bold;
 }
 
-.descbox__table-label-first {
-    font-size: 7pt;
-}
 .descbox__table-label {
     font-size: 7pt;
-    font-weight: bold;
-}
-
-.descbox__table-value-first {
-    font-size: 7pt;
-    text-align: right;
 }
 
 .descbox__table-value {
@@ -659,7 +643,6 @@ hr.invisible {
     line-height: 15pt;
     margin-bottom: 4.25mm;
     font-weight: 700;
-    font-style: italic;
 }
 
 .header__container__head-date {
@@ -673,13 +656,12 @@ hr.invisible {
 table.postable tr td,
 table.partialheader tr td,
 table.sum_table tr td {
-    position: relative;
     vertical-align: top;
     line-height: 6mm;
 }
 
 table.postable span.posname{
-    font-weight: 400;
+    font-weight: 700;
 }
 
 table.postable .position td, table.postable .position-heading td {
@@ -715,8 +697,8 @@ table.sum_table thead tr td::before {
 table.postable thead, 
 table.partialheader thead, 
 table.sum_table thead {
-    font-style: italic;
-    font-weight: 400;
+    background-color: #EBEBEB;
+    font-weight: 700;
 }
 
 
@@ -728,19 +710,22 @@ table.sum_table tfoot tr:last-child td:first-child {
 
 table.postable tfoot tr.total td {
     font-weight: 700;
+    background-color: #EBEBEB;
 }
 
 
 table.postable tfoot .line {
-    border-top: 1px solid #cccccc;
-    height: 1pt;
+    border-top: 1px solid #EBEBEB;
+    height: 2pt;
 }
 
 table.postable tfoot .totalnet, table.postable tfoot .discountnet {
+    background-color: #EBEBEB;
 }
 
 table.postable tfoot .totalnetPosSum{
-    border-bottom: 1px solid #cccccc;
+    background-color: #EBEBEB;
+    border-bottom: 1px solid #000;
 }
 
 table.postable .position__title,
@@ -793,7 +778,7 @@ table.sum_table tfoot tr:nth-last-child(2) {
 table.postable tfoot tr.line,
 table.partialheader tfoot tr.line,
 table.sum_table tfoot tr.line {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
     height: 2pt;
 }
 
@@ -804,18 +789,26 @@ table.sum_table tfoot tr.total {
 }
 
 table.partialheader .partialPosition td {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
 }
 
 table.partialheader tbody tr.sum_row{
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
     font-weight: bold;
 }
 
 table.partialheader tbody tr.sum_row_partial{
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
     font-weight: bold;
+}
+
+table.sum_table tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+table.sum_table tr:nth-child(even){
+    background-color: #EBEBEB;
 }
 
 table.sum_table .remaining_amount_net td {
@@ -824,11 +817,11 @@ table.sum_table .remaining_amount_net td {
 
 table.sum_table .remaining_amount {
     background-color: transparent !important;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 table.sum_table .remaining_amount_gross {
-    border-bottom: double 4px #cccccc;
+    border-bottom: double 4px #000;
 }
 
 footer {
@@ -934,11 +927,11 @@ footer .pagecount {
 
 
 <footer>
-<!--     {{#parameter.printPageNumbers_Y}}
+    {{#parameter.printPageNumbers_Y}}
     <div class="pagecount">
         <span class="page"/>/<span class="totalPages"/>
     </div>
-    {{/parameter.printPageNumbers_Y}} -->
+    {{/parameter.printPageNumbers_Y}}
     {{#parameter.printFooter_Y}}
 
 
@@ -1112,10 +1105,9 @@ footer .pagecount {
 <div class="descbox">
     <table>
         <tr>
-            <td class="descbox__table-label-first">{{# i18n }}Order Nr.{{/ i18n}}</td>
-            <td class="descbox__table-value-first">{{data.object.order_number}}</td>
+            <td class="descbox__table-label">{{# i18n }}Order Nr.{{/ i18n}}</td>
+            <td class="descbox__table-value">{{data.object.order_number}}</td>
         </tr>
-        <tr class="descbox_spacer"></tr>   
         <tr>
             <td class="descbox__table-label">{{# i18n }}Date{{/ i18n}}</td>
             <td class="descbox__table-value">{{# date }}{{data.object.order_date}}{{/ date }}</td>
@@ -1150,13 +1142,6 @@ footer .pagecount {
             <td class="descbox__table-value descbox__table-value__contact">{{data.object.contact_person}}</td>
         </tr>
         {{/parameter.printContactPerson_Y}}
-
-        {{#parameter.printPageNumbers_Y}}
-        <tr>
-            <td class="descbox__table-label">{{# i18n }}Page{{/ i18n}}</td>
-            <td class="descbox__table-value"><span class="page"/> {{# i18n }}PageOf{{/ i18n}} <span class="totalPages"/></td>
-        </tr>
-        {{/parameter.printPageNumbers_Y}}
 
     </table>
 
