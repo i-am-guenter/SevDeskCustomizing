@@ -7,7 +7,7 @@
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 90mm 15mm 50mm 20mm;
+                margin: 98mm 15mm 50mm 20mm;
 
                 @top-right {
                     content: element(headerIdentifier);
@@ -216,7 +216,7 @@
             visibility: hidden;
             clear: both;
             margin: 0;
-            height: 26mm;
+            height: 20mm;
         }
 
         .header__container {
@@ -379,7 +379,7 @@
         table.postable,
         table.partialheader,
         table.sum_table {
-            margin: 15mm 0;
+            margin: 10mm 0;
         }
 
         td.right {
@@ -526,7 +526,7 @@
 }
 
 body.main {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Arial", "Open Sans", sans-serif;
     font-size: 9pt;
     line-height: 1.2;
     margin-right: 5mm;
@@ -587,10 +587,11 @@ div.recipient {
 
 header div.descbox {
     position: absolute;
-    top: 60mm;
-    right: 5mm;
-    width: 65mm;
+    top: 57mm;
+    right: 0mm;
+    width: 55mm;
     z-index: 1000;
+    padding: 05mm;
 }
 
 div.descbox table tr td {
@@ -632,7 +633,7 @@ hr.invisible {
     visibility: hidden;
     clear: both;
     margin: 0;
-    height: 26mm;
+    height: 20mm;
 }
 
 .header__container__head-text {
@@ -953,7 +954,7 @@ footer .pagecount::before{
         {{/data.object.delivery_date}}
 
         <tr class="descbox_spacer"></tr>
-
+<!--
         {{#parameter.printCustomerNumber_Y}}
         <tr>
             <td class="descbox__table-label">{{# i18n }}Your customer no.{{/ i18n}}</td>
@@ -967,14 +968,19 @@ footer .pagecount::before{
             <td class="descbox__table-value">{{data.object.vat_number}}</td>
         </tr>
         {{/data.object.vat_number}}
-
+-->
         {{#parameter.printContactPerson_Y}}
         <tr>
             <td class="descbox__table-label">{{# i18n }}Your contact{{/ i18n}}</td>
             <td class="descbox__table-value descbox__table-value__contact">{{data.object.contact_person}}</td>
         </tr>
         {{/parameter.printContactPerson_Y}}
-
+        {{#parameter.printPageNumbers_Y}}
+        <tr>
+            <td class="descbox__table-label">{{# i18n }}Page{{/ i18n}}</td>
+            <td class="descbox__table-value descbox__table-value__contact"><span class="page"/> {{# i18n }}PageOf{{/ i18n}} <span class="totalPages"/></td>
+        </tr>
+        {{/parameter.printPageNumbers_Y}}
     </table>
 
     <div class="url-qrcodeWrapper">
