@@ -1,14 +1,14 @@
-<!-- letter -->
+<!-- packinglist -->
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{data.object.order_number}}</title>
+    <title>{{data.object.order_number_complete}}</title>
     <style>
         @font-face { font-family: 'ocrb'; src: url('https://my.sevdesk.de/assets/fonts/OcrB/ocrb.ttf'); }
         @media print {
             @page {
                 size: A4 portrait;
-                margin: 50mm 15mm 35mm 20mm;
+                margin: 98mm 15mm 50mm 20mm;
 
                 @top-right {
                     content: element(headerIdentifier);
@@ -21,7 +21,16 @@
                 @left-middle {
                     content: element(foldlinesIdentifier);
                 }
+
+                @page : first {
+                    margin: 80mm 15mm 50mm 20mm;
+                }
             }
+        }
+
+        .old_template
+        {
+            display: none;
         }
 
         .foldline1 {
@@ -138,7 +147,7 @@
 
         div.addressline {
             position: absolute;
-            top: calc(48mm -  50mm);
+            top: calc(48mm -  80mm);
             left: 1mm;
             max-width: 85mm;
             white-space: pre-wrap;
@@ -146,20 +155,20 @@
 
         div.recipient {
             position: absolute;
-            top: calc(48mm + 9mm - 50mm);
+            top: calc(48mm + 9mm - 80mm);
             left: 1mm;
             max-width: 85mm;
             white-space: pre-wrap;
             word-wrap: anywhere;
         }
-
+/*
         div.descbox {
             position: absolute;
             top: calc(48mm - 50mm);
             right: 0;
             width: 69.667mm;
         }
-
+*/
         div.descbox table {
             width: 100%;
             border-spacing: 0;
@@ -173,10 +182,6 @@
 
         div.descbox table tr td:first-child {
             padding-left: 0;
-        }
-
-        div.descbox table tr:first-child td{
-            font-size: 7pt !important;
         }
 
         .descbox__table-label {
@@ -214,7 +219,7 @@
             visibility: hidden;
             clear: both;
             margin: 0;
-            height: 56mm;
+            height: 20mm;
         }
 
         .header__container {
@@ -372,7 +377,7 @@
         table.postable,
         table.partialheader,
         table.sum_table {
-            margin: 4mm 0;
+            margin: 10mm 0;
         }
 
         td.right {
@@ -382,7 +387,6 @@
         table.postable .postext {
             white-space: pre-wrap;
             word-break: break-all;
-            
         }
 
         h1.partialInvoiceCalculation {
@@ -517,7 +521,7 @@
 
 
     <!-- START OF CUSTOM CSS OVERRIDES -->
-    <style>@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap');
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
     --primary-color: #000000;
@@ -535,10 +539,9 @@
 }
 
 body.main {
-    font-family: "Anuphan", sans-serif;
+    font-family: "Arial", "Open Sans", sans-serif;
     font-size: 9pt;
     line-height: 1.2;
-    color: #333333;
     margin-right: 5mm;
     margin: 0px 15px 0px 8px;
 }
@@ -562,15 +565,10 @@ header .page-header__container .page-header__container-label {
 }
 
 header .page-header__container .page-header__container-label .page-header__container-label-text {
-    font-style: italic;
     line-height: 1.2;
     font-size: 23pt;
     font-weight: 400;
     color: var(--primary-color);
-}
-
-h1 {
-    font-style: italic;
 }
 
 div.addressline {
@@ -587,27 +585,36 @@ div.addressline .divider::before {
 }
 
 div.recipient {
+    position: absolute;
+    top: calc(48mm + 9mm - 80mm);
+    left: 1mm;
+    max-width: 85mm;
+    white-space: pre-wrap;
+    word-wrap: anywhere;
+    /*
     top: 10mm;
     font-size: 9pt;
     font-weight: 400;
+    */
 }
 
-div.descbox {
+header div.descbox {
     position: absolute;
-    top: 3mm;
-    right: 2mm;
-    width: 65mm;
+    top: 57mm;
+    right: 0mm;
+    width: 55mm;
+    z-index: 1000;
+    padding: 05mm;
 }
 
 div.descbox table tr td {
     width: 50%;
     word-wrap: anywhere;
-    padding: 0.5mm 0.5mm; /* Reduced padding */
+    padding: 0.4mm 0.5mm; /* Reduced padding */
 }
 
 div.descbox table tr:first-child td{
     font-size: 11pt;
-    font-style: italic;
 }
 
 .descbox__table-label {
@@ -639,7 +646,7 @@ hr.invisible {
     visibility: hidden;
     clear: both;
     margin: 0;
-    height: 43mm;
+    height: 20mm;
 }
 
 .header__container__head-text {
@@ -648,7 +655,6 @@ hr.invisible {
     line-height: 15pt;
     margin-bottom: 4.25mm;
     font-weight: 700;
-    font-style: italic;
 }
 
 .header__container__head-date {
@@ -662,13 +668,12 @@ hr.invisible {
 table.postable tr td,
 table.partialheader tr td,
 table.sum_table tr td {
-    position: relative;
     vertical-align: top;
     line-height: 6mm;
 }
 
 table.postable span.posname{
-    font-weight: 400;
+    font-weight: 700;
 }
 
 table.postable .position td, table.postable .position-heading td {
@@ -704,8 +709,8 @@ table.sum_table thead tr td::before {
 table.postable thead, 
 table.partialheader thead, 
 table.sum_table thead {
-    font-style: italic;
-    font-weight: 400;
+    background-color: #EBEBEB;
+    font-weight: 700;
 }
 
 
@@ -717,19 +722,22 @@ table.sum_table tfoot tr:last-child td:first-child {
 
 table.postable tfoot tr.total td {
     font-weight: 700;
+    background-color: #EBEBEB;
 }
 
 
 table.postable tfoot .line {
-    border-top: 1px solid #cccccc;
-    height: 1pt;
+    border-top: 1px solid #EBEBEB;
+    height: 2pt;
 }
 
 table.postable tfoot .totalnet, table.postable tfoot .discountnet {
+    background-color: #EBEBEB;
 }
 
 table.postable tfoot .totalnetPosSum{
-    border-bottom: 1px solid #cccccc;
+    background-color: #EBEBEB;
+    border-bottom: 1px solid #000;
 }
 
 table.postable .position__title,
@@ -782,7 +790,7 @@ table.sum_table tfoot tr:nth-last-child(2) {
 table.postable tfoot tr.line,
 table.partialheader tfoot tr.line,
 table.sum_table tfoot tr.line {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
     height: 2pt;
 }
 
@@ -793,18 +801,26 @@ table.sum_table tfoot tr.total {
 }
 
 table.partialheader .partialPosition td {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
 }
 
 table.partialheader tbody tr.sum_row{
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
     font-weight: bold;
 }
 
 table.partialheader tbody tr.sum_row_partial{
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
     font-weight: bold;
+}
+
+table.sum_table tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+table.sum_table tr:nth-child(even){
+    background-color: #EBEBEB;
 }
 
 table.sum_table .remaining_amount_net td {
@@ -813,11 +829,11 @@ table.sum_table .remaining_amount_net td {
 
 table.sum_table .remaining_amount {
     background-color: transparent !important;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 table.sum_table .remaining_amount_gross {
-    border-bottom: double 4px #cccccc;
+    border-bottom: double 4px #000;
 }
 
 footer {
@@ -911,6 +927,62 @@ footer .pagecount {
     </div>
     {{/data.is_logo}}
     {{/parameter.letterpaper_S}}
+    <div class="descbox">
+        <table>
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}delivery note number{{/ i18n}}</td>
+                <td class="descbox__table-value">{{data.object.order_number_complete}}</td>
+            </tr>
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}Date{{/ i18n}}</td>
+                <td class="descbox__table-value">{{# date }}{{data.object.order_date}}{{/ date }}</td>
+            </tr>
+
+            {{#data.object.customer_internal_note}}
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}customer_internal_note{{/ i18n}}</td>
+                <td class="descbox__table-value">{{data.object.customer_internal_note}}</td>
+            </tr>
+            {{/data.object.customer_internal_note}}
+
+            <tr class="descbox_spacer"></tr>
+<!--
+            {{#parameter.printCustomerNumber_Y}}
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}Your customer no.{{/ i18n}}</td>
+                <td class="descbox__table-value">{{data.object.customer_number}}</td>
+            </tr>
+            {{/parameter.printCustomerNumber_Y}}
+
+            {{#data.object.vat_number}}
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}Your VAT-ID{{/ i18n}}</td>
+                <td class="descbox__table-value">{{data.object.vat_number}}</td>
+            </tr>
+            {{/data.object.vat_number}}
+-->
+            {{#parameter.printContactPerson_Y}}
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}Your contact{{/ i18n}}</td>
+                <td class="descbox__table-value descbox__table-value__contact">{{data.object.contact_person}}</td>
+            </tr>
+            {{/parameter.printContactPerson_Y}}
+            {{#parameter.printPageNumbers_Y}}
+            <tr>
+                <td class="descbox__table-label">{{# i18n }}Page{{/ i18n}}</td>
+                <td class="descbox__table-value"><span class="page"/> {{# i18n }}PageOf{{/ i18n}} <span class="totalPages"/></td>
+            </tr>
+            {{/parameter.printPageNumbers_Y}}
+
+
+        </table>
+
+    <div class="url-qrcodeWrapper">
+        {{#parameter.qrCode_Y}}
+        <a href="{{data.object.qr_url}}" class="qrcode url-qrcode"></a>
+        {{/parameter.qrCode_Y}}
+    </div>
+</div>
 </header>
 
 {{#parameter.printFoldLines_Y}}
@@ -923,11 +995,13 @@ footer .pagecount {
 
 
 <footer>
+<!--
     {{#parameter.printPageNumbers_Y}}
     <div class="pagecount">
         <span class="page"/>/<span class="totalPages"/>
     </div>
     {{/parameter.printPageNumbers_Y}}
+-->    
     {{#parameter.printFooter_Y}}
 
 
@@ -1097,13 +1171,24 @@ footer .pagecount {
 {{/parameter.printDeliveryReturn_Y}}
 
 <div class="recipient">{{data.object.address}}</div>
-
+<!--
 <div class="descbox">
     <table>
         <tr>
-            <td class="descbox__table-label">{{# i18n }}Date{{/ i18n}}</td>
-            <td class="descbox__table-value">{{# date }}{{data.object.letter_date}}{{/ date }}</td>
+            <td class="descbox__table-label">{{# i18n }}delivery note number{{/ i18n}}</td>
+            <td class="descbox__table-value">{{data.object.order_number_complete}}</td>
         </tr>
+        <tr>
+            <td class="descbox__table-label">{{# i18n }}Date{{/ i18n}}</td>
+            <td class="descbox__table-value">{{# date }}{{data.object.order_date}}{{/ date }}</td>
+        </tr>
+
+        {{#data.object.customer_internal_note}}
+        <tr>
+            <td class="descbox__table-label">{{# i18n }}customer_internal_note{{/ i18n}}</td>
+            <td class="descbox__table-value">{{data.object.customer_internal_note}}</td>
+        </tr>
+        {{/data.object.customer_internal_note}}
 
         <tr class="descbox_spacer"></tr>
 
@@ -1113,6 +1198,13 @@ footer .pagecount {
             <td class="descbox__table-value">{{data.object.customer_number}}</td>
         </tr>
         {{/parameter.printCustomerNumber_Y}}
+
+        {{#data.object.vat_number}}
+        <tr>
+            <td class="descbox__table-label">{{# i18n }}Your VAT-ID{{/ i18n}}</td>
+            <td class="descbox__table-value">{{data.object.vat_number}}</td>
+        </tr>
+        {{/data.object.vat_number}}
 
         {{#parameter.printContactPerson_Y}}
         <tr>
@@ -1129,16 +1221,156 @@ footer .pagecount {
         {{/parameter.qrCode_Y}}
     </div>
 </div>
+-->
 <!-- end header first page -->
 
 <hr class="invisible" />
 <div class="header__container">
     <span class="header__container__head-text">{{data.object.header}}</span>
-    <span class="header__container__head-date">{{# date }}{{data.object.letter_date}}{{/ date }}</span>
+    <span class="header__container__head-date">{{# date }}{{data.object.order_date}}{{/ date }}</span>
 </div>
 <div class="headText">
-    {{{data.object.text}}}
+    {{{data.object.head_text}}}
 </div>
+
+
+<!-- position table -->
+<table class="postable new_template">
+    <thead>
+        <tr class="postheader">
+            {{^parameter.printPartNumber_Y}}
+            <td>{{# i18n }}Description{{/ i18n}}</td>
+            {{/parameter.printPartNumber_Y}}
+            {{#parameter.printPartNumber_Y}}
+            <td>{{# i18n }}Description{{/ i18n}}</td>
+            <td style="width: 15mm;">{{# i18n }}Article{{/ i18n}}</td>
+            {{/parameter.printPartNumber_Y}}
+            <td style="width: 25mm;" class="right">{{# i18n }}Quantity{{/ i18n}}</td>
+        </tr>
+    </thead>
+    <tbody>
+    {{#data.object.positions}}
+        {{#pos_nr}}
+            <tr class="position">
+                <td>
+                    <div style="display: flex;">
+                        <span class="posnr" style="width: 8mm; flex: 0 0 8mm;">
+                            {{^optional}}
+                                {{pos_nr}}.
+                            {{/optional}}
+                            {{#optional}}
+                                Opt.
+                            {{/optional}}
+                        </span>
+                        <div style="flex: 1;">
+                            <span class="position__title">{{{name}}}</span>
+                            <div class="postext">{{{text}}}</div>
+                        </div>
+                    </div>
+                </td>
+
+                {{#parameter.printPartNumber_Y}}
+                    <td>{{part_number}}</td>
+                {{/parameter.printPartNumber_Y}}
+
+                <td class="right">
+                    {{^hide_quantity}}
+                        {{#numberformat}}{{quantity}}{{/numberformat}}
+                    {{/hide_quantity}}
+                    {{unity_name}}
+                </td>
+                </td>
+            </tr>
+        {{/pos_nr}}
+        {{^pos_nr}}
+            <tr class="position-heading">
+                <td colspan="{{#parameter.printPartNumber_Y}}5{{/parameter.printPartNumber_Y}}{{^parameter.printPartNumber_Y}}4{{/parameter.printPartNumber_Y}}">
+                    <span style="font-weight: bold;">{{{name}}}</span>
+                    <div class="postext">{{{text}}}</div>
+                </td>
+            </tr>
+        {{/pos_nr}}
+    {{/data.object.positions}}
+    </tbody>
+</table>
+
+<!-- position table for old layout support -->
+<table class="postable old_template">
+    <thead>
+    <tr class="postheader">
+        <td style="width: 8mm;">{{# i18n }}Pos.{{/ i18n}}</td>
+        {{#parameter.printPartNumber_Y}}
+        <td style="width: 15mm;">{{# i18n }}Article{{/ i18n}}</td>
+        <td >{{# i18n }}Description{{/ i18n}}</td>
+        {{/parameter.printPartNumber_Y}}
+        {{^parameter.printPartNumber_Y}}
+        <td colspan="2">{{# i18n }}Description{{/ i18n}}</td>
+        {{/parameter.printPartNumber_Y}}
+        <td style="width: 25mm;" class="right">{{# i18n }}Quantity{{/ i18n}}</td>
+    </tr>
+    </thead>
+    <tbody>
+        {{#data.object.positions}}
+        <tr class="position">
+            {{#pos_nr}}
+            <td class="posnr">{{pos_nr}}.</td>
+            {{#parameter.printPartNumber_Y}}
+            <td>{{part_number}}</td>
+            <td><span style="font-weight: bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
+            {{/parameter.printPartNumber_Y}}
+            {{^parameter.printPartNumber_Y}}
+            <td colspan="2"><span style="font-weight: bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
+            {{/parameter.printPartNumber_Y}}
+            <td class="right">
+                {{^hide_quantity}}
+                {{#numberformat}}{{quantity}}{{/numberformat}}
+                {{/hide_quantity}}
+                {{unity_name}}
+            </td>
+            {{/pos_nr}}
+            {{^pos_nr}}
+            <td colspan="4"><span style="font-weight: bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
+            {{/pos_nr}}
+        </tr>
+        {{/data.object.positions}}
+    </tbody>
+    <tfoot>
+        <tr class="line">
+            <td colspan="4"></td>
+        </tr>
+    </tfoot>
+</table>
+<!-- end position table -->
+
+<!-- footer text -->
+<div class="footText">
+    {{#data.object.delivery_terms}}
+        {{# i18n }}Delivery Terms{{/ i18n}}: {{data.object.delivery_terms}}<br/>
+    {{/data.object.delivery_terms}}
+    {{#data.object.payment_terms}}
+        {{# i18n }}Payment Terms{{/ i18n}}: {{data.object.payment_terms}}<br/>
+    {{/data.object.payment_terms}}
+
+    {{{data.object.foot_text}}}
+</div>
+<!-- end footer text -->
+
+<!-- signature -->
+{{#parameter.printAcceptance_Y}}
+    <table class="acceptance">
+        <tr>
+            <td>
+                <span class="line"></span>
+                <span>{{# i18n }}Place / date{{/ i18n}}</span>
+            </td>
+            <td>
+                <span class="line"></span>
+                <span>{{# i18n }}Signature / Stamp{{/ i18n}}</span>
+            </td>
+        </tr>
+    </table>
+{{/parameter.printAcceptance_Y}}
+<!-- end signature -->
 
 </body>
 </html>

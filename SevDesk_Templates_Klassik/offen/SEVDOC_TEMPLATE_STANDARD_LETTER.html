@@ -1,4 +1,4 @@
-<!-- order -->
+<!-- letter -->
 <html>
 <head>
     <meta charset="UTF-8">
@@ -23,12 +23,6 @@
                 }
             }
         }
-
-        .old_template
-        {
-            display: none;
-        }
-
 
         .foldline1 {
             position: absolute;
@@ -179,6 +173,10 @@
 
         div.descbox table tr td:first-child {
             padding-left: 0;
+        }
+
+        div.descbox table tr:first-child td{
+            font-size: 7pt !important;
         }
 
         .descbox__table-label {
@@ -519,7 +517,7 @@
 
 
     <!-- START OF CUSTOM CSS OVERRIDES -->
-    <style>@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&display=swap');
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
     --primary-color: #000000;
@@ -537,10 +535,9 @@
 }
 
 body.main {
-    font-family: "Anuphan", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 9pt;
     line-height: 1.2;
-    color: #333333;
     margin-right: 5mm;
     margin: 0px 15px 0px 8px;
 }
@@ -564,15 +561,10 @@ header .page-header__container .page-header__container-label {
 }
 
 header .page-header__container .page-header__container-label .page-header__container-label-text {
-    font-style: italic;
     line-height: 1.2;
     font-size: 23pt;
     font-weight: 400;
     color: var(--primary-color);
-}
-
-h1 {
-    font-style: italic;
 }
 
 div.addressline {
@@ -604,12 +596,11 @@ div.descbox {
 div.descbox table tr td {
     width: 50%;
     word-wrap: anywhere;
-    padding: 0.5mm 0.5mm; /* Reduced padding */
+    padding: 0.4mm 0.5mm; /* Reduced padding */
 }
 
 div.descbox table tr:first-child td{
     font-size: 11pt;
-    font-style: italic;
 }
 
 .descbox__table-label {
@@ -650,7 +641,6 @@ hr.invisible {
     line-height: 15pt;
     margin-bottom: 4.25mm;
     font-weight: 700;
-    font-style: italic;
 }
 
 .header__container__head-date {
@@ -664,13 +654,12 @@ hr.invisible {
 table.postable tr td,
 table.partialheader tr td,
 table.sum_table tr td {
-    position: relative;
     vertical-align: top;
     line-height: 6mm;
 }
 
 table.postable span.posname{
-    font-weight: 400;
+    font-weight: 700;
 }
 
 table.postable .position td, table.postable .position-heading td {
@@ -706,8 +695,8 @@ table.sum_table thead tr td::before {
 table.postable thead, 
 table.partialheader thead, 
 table.sum_table thead {
-    font-style: italic;
-    font-weight: 400;
+    background-color: #EBEBEB;
+    font-weight: 700;
 }
 
 
@@ -719,19 +708,22 @@ table.sum_table tfoot tr:last-child td:first-child {
 
 table.postable tfoot tr.total td {
     font-weight: 700;
+    background-color: #EBEBEB;
 }
 
 
 table.postable tfoot .line {
-    border-top: 1px solid #cccccc;
-    height: 1pt;
+    border-top: 1px solid #EBEBEB;
+    height: 2pt;
 }
 
 table.postable tfoot .totalnet, table.postable tfoot .discountnet {
+    background-color: #EBEBEB;
 }
 
 table.postable tfoot .totalnetPosSum{
-    border-bottom: 1px solid #cccccc;
+    background-color: #EBEBEB;
+    border-bottom: 1px solid #000;
 }
 
 table.postable .position__title,
@@ -784,7 +776,7 @@ table.sum_table tfoot tr:nth-last-child(2) {
 table.postable tfoot tr.line,
 table.partialheader tfoot tr.line,
 table.sum_table tfoot tr.line {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
     height: 2pt;
 }
 
@@ -795,18 +787,26 @@ table.sum_table tfoot tr.total {
 }
 
 table.partialheader .partialPosition td {
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
 }
 
 table.partialheader tbody tr.sum_row{
-    border-top: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
     font-weight: bold;
 }
 
 table.partialheader tbody tr.sum_row_partial{
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #EBEBEB;
+    border-bottom: 1px solid #EBEBEB;
     font-weight: bold;
+}
+
+table.sum_table tr:nth-child(odd) {
+    background-color: transparent;
+}
+
+table.sum_table tr:nth-child(even){
+    background-color: #EBEBEB;
 }
 
 table.sum_table .remaining_amount_net td {
@@ -815,11 +815,11 @@ table.sum_table .remaining_amount_net td {
 
 table.sum_table .remaining_amount {
     background-color: transparent !important;
-    font-weight: 700;
+    font-weight: bold;
 }
 
 table.sum_table .remaining_amount_gross {
-    border-bottom: double 4px #cccccc;
+    border-bottom: double 4px #000;
 }
 
 footer {
@@ -1103,20 +1103,9 @@ footer .pagecount {
 <div class="descbox">
     <table>
         <tr>
-            <td class="descbox__table-label">{{# i18n }}Order Nr.{{/ i18n}}</td>
-            <td class="descbox__table-value">{{data.object.order_number}}</td>
-        </tr>
-        <tr>
             <td class="descbox__table-label">{{# i18n }}Date{{/ i18n}}</td>
-            <td class="descbox__table-value">{{# date }}{{data.object.order_date}}{{/ date }}</td>
+            <td class="descbox__table-value">{{# date }}{{data.object.letter_date}}{{/ date }}</td>
         </tr>
-
-        {{#data.object.customer_internal_note}}
-        <tr>
-            <td class="descbox__table-label">{{# i18n }}customer_internal_note{{/ i18n}}</td>
-            <td class="descbox__table-value">{{data.object.customer_internal_note}}</td>
-        </tr>
-        {{/data.object.customer_internal_note}}
 
         <tr class="descbox_spacer"></tr>
 
@@ -1126,13 +1115,6 @@ footer .pagecount {
             <td class="descbox__table-value">{{data.object.customer_number}}</td>
         </tr>
         {{/parameter.printCustomerNumber_Y}}
-
-        {{#data.object.vat_number}}
-        <tr>
-            <td class="descbox__table-label">{{# i18n }}Your VAT-ID{{/ i18n}}</td>
-            <td class="descbox__table-value">{{data.object.vat_number}}</td>
-        </tr>
-        {{/data.object.vat_number}}
 
         {{#parameter.printContactPerson_Y}}
         <tr>
@@ -1154,441 +1136,11 @@ footer .pagecount {
 <hr class="invisible" />
 <div class="header__container">
     <span class="header__container__head-text">{{data.object.header}}</span>
-    <span class="header__container__head-date">{{# date }}{{data.object.order_date}}{{/ date }}</span>
+    <span class="header__container__head-date">{{# date }}{{data.object.letter_date}}{{/ date }}</span>
 </div>
 <div class="headText">
-    {{{data.object.head_text}}}
+    {{{data.object.text}}}
 </div>
-
-
-<!-- position table -->
-<table class="postable new_template">
-    <thead>
-        <tr class="postheader">
-            {{^parameter.printPartNumber_Y}}
-            <td>{{# i18n }}Description{{/ i18n}}</td>
-            {{/parameter.printPartNumber_Y}}
-            {{#parameter.printPartNumber_Y}}
-            <td>{{# i18n }}Description{{/ i18n}}</td>
-            <td style="width: 15mm;">{{# i18n }}Article{{/ i18n}}</td>
-            {{/parameter.printPartNumber_Y}}
-            <td style="width: 18.5mm;" class="right">{{# i18n }}Quantity{{/ i18n}}</td>
-            <td style="width: 25mm;" class="right">{{# i18n }}Unit price{{/ i18n}}</td>
-            <td style="width: 25mm;" class="right">{{# i18n }}Total price{{/ i18n}}</td>
-        </tr>
-    </thead>
-    <tbody>
-    {{#data.object.positions}}
-        {{#pos_nr}}
-            <tr class="position">
-                <td>
-                    <div style="display: flex;">
-                        <span class="posnr" style="width: 8mm; flex: 0 0 8mm;">
-                            {{^optional}}
-                                {{pos_nr}}.
-                            {{/optional}}
-                            {{#optional}}
-                                Opt.
-                            {{/optional}}
-                        </span>
-                        <div style="flex: 1;">
-                            <span class="position__title">{{{name}}}</span>
-                            <div class="postext">{{{text}}}</div>
-                        </div>
-                    </div>
-                </td>
-
-                {{#parameter.printPartNumber_Y}}
-                    <td>{{part_number}}</td>
-                {{/parameter.printPartNumber_Y}}
-
-                <td class="right">
-                    {{^hide_quantity}}
-                        {{#numberformat}}{{quantity}}{{/numberformat}}
-                    {{/hide_quantity}}
-                    {{unity_name}}
-                </td>
-
-                <td class="right">{{#currencyformat}}{{tax_price}}{{/currencyformat}}</td>
-                <td class="right" style="page-break-inside: avoid">
-                    {{^optional}}
-                        {{#currencyformat}}{{total}}{{/currencyformat}}
-                    {{/optional}}
-                    {{#optional}}
-                        ({{#currencyformat}}{{total}}{{/currencyformat}})
-                    {{/optional}}
-                    {{#discount}}
-                        <div class="discount">
-                            ({{# i18n }}Discount{{/ i18n}}{{#is_percentage}} {{discount}}% {{/is_percentage}}<br/>
-                            {{#currencyformat}}{{discounted_value}}{{/currencyformat}})
-                        </div>
-                    {{/discount}}
-                    {{#parameter.printPosTax_Y}}
-                        <div class="discount">
-                            ({{# i18n }}Tax{{/ i18n}} {{tax_rate}}%)<br/>
-                        </div>
-                    {{/parameter.printPosTax_Y}}
-                </td>
-            </tr>
-        {{/pos_nr}}
-        {{^pos_nr}}
-            <tr class="position-heading">
-                <td colspan="{{#parameter.printPartNumber_Y}}5{{/parameter.printPartNumber_Y}}{{^parameter.printPartNumber_Y}}4{{/parameter.printPartNumber_Y}}">
-                    <span style="font-weight: bold;">{{{name}}}</span>
-                    <div class="postext">{{{text}}}</div>
-                </td>
-            </tr>
-        {{/pos_nr}}
-    {{/data.object.positions}}
-    </tbody>
-    <tfoot>
-    {{#parameter.sumBlock_Y}}
-        {{#data.object.has_discounts}}
-        <tr class="discountnet">
-            <td>{{# i18n }}Sum positions{{/ i18n}}</td>
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td colspan="2"></td>
-
-            {{#data.object.show_net}}
-            <td class="right">{{#currencyformat}}{{data.object.total_withoutdisc_net}}{{/currencyformat}}</td>
-            {{/data.object.show_net}}
-            {{^data.object.show_net}}
-            <td class="right">{{#currencyformat}}{{data.object.total_without_discount}}{{/currencyformat}}</td>
-            {{/data.object.show_net}}
-        </tr>
-
-        {{#data.object.discounts}}
-        <tr class="discount">
-            <td>{{ text }}</td>
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td></td>
-
-            <td class="right" colspan="2">
-                {{#percentage}}
-                {{value}} % ({{#currencyformat}}{{value_relative}}{{/currencyformat}})
-                {{/percentage}}
-                {{^percentage}}
-                {{#currencyformat}}{{value}}{{/currencyformat}}
-                {{/percentage}}
-            </td>
-        </tr>
-        {{/data.object.discounts}}
-        {{/data.object.has_discounts}}
-
-        {{#data.object.show_net}}
-        <tr class="totalnet">
-            <td>{{# i18n }}Total net{{/ i18n}}</td>
-
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td colspan="2"></td>
-
-            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.show_net}}
-
-        {{^data.object.show_net}}
-        {{^data.object.has_discounts}}
-        <tr class="totalnet">
-            <td>{{# i18n }}Total net{{/ i18n}}</td>
-
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td colspan="2"></td>
-
-            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.has_discounts}}
-        {{#data.object.has_discounts}}
-        <tr class="totalnet">
-            <td>{{# i18n }}Gross with discounts{{/ i18n}}</td>
-
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td colspan="2"></td>
-
-            <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.has_discounts}}
-        {{/data.object.show_net}}
-
-        {{#tax_type_rule}}
-        <tr class="vat">
-            <td>TAX_TYPE_RULE_DESCRIPTION_PLACEHOLDER</td>
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td colspan="2"></td>
-
-            <td class="right">TAX_TYPE_RULE_VALUE_PLACEHOLDER</td>
-        </tr>
-        {{/tax_type_rule}}
-
-        {{^data.object.show_net}}
-        {{#data.object.has_discounts}}
-        <tr class="totalnetPosSum">
-            <td>{{# i18n }}Total net{{/ i18n}}</td>
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td colspan="2"></td>
-
-            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.has_discounts}}
-        {{/data.object.show_net}}
-
-        <tr class="total">
-            <td>{{# i18n }}Total gross{{/ i18n}}</td>
-
-            {{#parameter.printPartNumber_Y}}
-            <td></td>
-            {{/parameter.printPartNumber_Y}}
-            <td></td>
-
-            <td class="right" colspan="2">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
-        </tr>
-        {{#data.object.has_optional_positions}}
-            {{#data.object.show_net}}
-                <tr class="vat">
-                    <td>{{# i18n }}Sum of net positions optional{{/ i18n}}</td>
-
-                    {{#parameter.printPartNumber_Y}}
-                        <td></td>
-                    {{/parameter.printPartNumber_Y}}
-                    <td></td>
-
-                    <td class="right" colspan="2">{{#currencyformat}}{{data.object.total_opt_net}}{{/currencyformat}}</td>
-                </tr>
-            {{/data.object.show_net}}
-            {{#data.object.show_gross}}
-                <tr class="vat">
-                    <td>{{# i18n }}Sum of gross positions optional{{/ i18n}}</td>
-
-                    {{#parameter.printPartNumber_Y}}
-                        <td></td>
-                    {{/parameter.printPartNumber_Y}}
-                    <td></td>
-
-                    <td class="right" colspan="2">{{#currencyformat}}{{data.object.total_opt_gross}}{{/currencyformat}}</td>
-                </tr>
-            {{/data.object.show_gross}}
-        {{/data.object.has_optional_positions}}
-    {{/parameter.sumBlock_Y}}
-    </tfoot>
-</table>
-
-<!-- position table for old layout support -->
-<table class="postable old_template">
-    <thead>
-    <tr class="postheader">
-        <td style="width: 8mm;">{{# i18n }}Pos.{{/ i18n}}</td>
-        {{#parameter.printPartNumber_Y}}
-        <td style="width: 15mm;">{{# i18n }}Article{{/ i18n}}</td>
-        <td>{{# i18n }}Description{{/ i18n}}</td>
-        {{/parameter.printPartNumber_Y}}
-        {{^parameter.printPartNumber_Y}}
-        <td colspan="2">{{# i18n }}Description{{/ i18n}}</td>
-        {{/parameter.printPartNumber_Y}}
-        <td style="width: 17mm;" class="right">{{# i18n }}Quantity{{/ i18n}}</td>
-        <td style="width: 25mm;" class="right">{{# i18n }}Unit price{{/ i18n}}</td>
-        <td style="width: 26mm;" class="right">{{# i18n }}Total price{{/ i18n}}</td>
-    </tr>
-    </thead>
-    <tbody>
-        {{#data.object.positions}}
-        <tr class="position">
-            {{#pos_nr}}
-            <td class="posnr">
-                {{^optional}}
-                    {{pos_nr}}.
-                {{/optional}}
-                {{#optional}}
-                    Opt.
-                {{/optional}}
-            </td>
-            {{#parameter.printPartNumber_Y}}
-            <td>{{part_number}}</td>
-            <td><span style="font-weight: bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
-            {{/parameter.printPartNumber_Y}}
-            {{^parameter.printPartNumber_Y}}
-            <td colspan="2"><span style="font-weight: bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
-            {{/parameter.printPartNumber_Y}}
-            <td class="right">
-                {{^hide_quantity}}
-                {{#numberformat}}{{quantity}}{{/numberformat}}
-                {{/hide_quantity}}
-                {{unity_name}}
-            </td>
-            <td class="right">{{#currencyformat}}{{tax_price}}{{/currencyformat}}</td>
-            <td class="right">
-                {{^optional}}
-                {{#currencyformat}}{{total}}{{/currencyformat}}
-                {{/optional}}
-                {{#optional}}
-                ({{#currencyformat}}{{total}}{{/currencyformat}})
-                {{/optional}}
-                {{#discount}}
-                <div class="discount">
-                    ({{# i18n }}Discount{{/ i18n}}{{#is_percentage}} {{discount}}% {{/is_percentage}}<br/>
-                    {{#currencyformat}}{{discounted_value}}{{/currencyformat}})
-                </div>
-                {{/discount}}
-                {{#parameter.printPosTax_Y}}
-                <div class="discount">
-                    ({{# i18n }}Tax{{/ i18n}} {{tax_rate}}%)<br/>
-                </div>
-                {{/parameter.printPosTax_Y}}
-            </td>
-            {{/pos_nr}}
-            {{^pos_nr}}
-            <td colspan="6"><span style="font-weight: bold;">{{{name}}}</span><div class="postext">{{{text}}}</div></td>
-            {{/pos_nr}}
-        </tr>
-        {{/data.object.positions}}
-    </tbody>
-    <tfoot>
-            <tr class="line">
-            <td colspan="6"></td>
-        </tr>
-        
-        {{#parameter.sumBlock_Y}}
-        {{#data.object.has_discounts}}
-        <tr class="discountnet">
-            <td></td>
-            <td colspan="4">{{# i18n }}Sum positions{{/ i18n}}</td>
-            {{#data.object.show_net}}
-            <td class="right">{{#currencyformat}}{{data.object.total_withoutdisc_net}}{{/currencyformat}}</td>
-            {{/data.object.show_net}}
-            {{^data.object.show_net}}
-            <td class="right">{{#currencyformat}}{{data.object.total_without_discount}}{{/currencyformat}}</td>
-            {{/data.object.show_net}}
-        </tr>
-        {{#data.object.discounts}}
-        <tr class="discount">
-            <td></td>
-            <td colspan="3">{{ text }}</td>
-            <td class="right" colspan="2">
-                {{#percentage}}
-                    {{value}} % ({{#currencyformat}}{{value_relative}}{{/currencyformat}})
-                {{/percentage}}
-                {{^percentage}}
-                    {{#currencyformat}}{{value}}{{/currencyformat}}
-                {{/percentage}}
-            </td>
-        </tr>
-        {{/data.object.discounts}}
-        {{/data.object.has_discounts}}
-        {{#data.object.show_net}}
-        <tr class="totalnet">
-            <td></td>
-            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.show_net}}
-        {{^data.object.show_net}}
-        {{^data.object.has_discounts}}
-        <tr class="totalnet">
-            <td></td>
-            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.has_discounts}}
-        {{#data.object.has_discounts}}
-        <tr class="totalnet">
-            <td></td>
-            <td colspan="4">{{# i18n }}Gross with discounts{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.has_discounts}}
-        {{/data.object.show_net}}
-        
-        {{#tax_type_rule}}
-            <tr class="vat">
-                <td></td>
-                <td colspan="4">TAX_TYPE_RULE_DESCRIPTION_PLACEHOLDER</td>
-                <td class="right">TAX_TYPE_RULE_VALUE_PLACEHOLDER</td>
-            </tr>
-        {{/tax_type_rule}}
-
-        {{^data.object.show_net}}
-        {{#data.object.has_discounts}}
-        <tr class="totalnetPosSum">
-            <td></td>
-            <td colspan="4">{{# i18n }}Total net{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.has_discounts}}
-        {{/data.object.show_net}}
-        <tr class="total">
-            <td></td>
-            <td colspan="4">{{# i18n }}Total gross{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total}}{{/currencyformat}}</td>
-        </tr>
-        {{#data.object.has_optional_positions}}
-        {{#data.object.show_net}}
-        <tr class="vat">
-            <td></td>
-            <td colspan="4">{{# i18n }}Sum of net positions optional{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total_opt_net}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.show_net}}
-        {{#data.object.show_gross}}
-        <tr class="vat">
-            <td></td>
-            <td colspan="4">{{# i18n }}Sum of gross positions optional{{/ i18n}}</td>
-            <td class="right">{{#currencyformat}}{{data.object.total_opt_gross}}{{/currencyformat}}</td>
-        </tr>
-        {{/data.object.show_gross}}
-        {{/data.object.has_optional_positions}}
-        {{/parameter.sumBlock_Y}}
-    </tfoot>
-</table>
-<!-- end position table -->
-
-<!-- footer text -->
-<div class="footText">
-    {{#data.object.delivery_terms}}
-        {{# i18n }}Delivery Terms{{/ i18n}}: {{data.object.delivery_terms}}<br/>
-    {{/data.object.delivery_terms}}
-    {{#data.object.payment_terms}}
-        {{# i18n }}Payment Terms{{/ i18n}}: {{data.object.payment_terms}}<br/>
-    {{/data.object.payment_terms}}
-
-    {{{data.object.foot_text}}}
-</div>
-<!-- end footer text -->
-
-<!-- signature -->
-{{#parameter.printAcceptance_Y}}
-    <table class="acceptance">
-        <tr>
-            <td>
-                <span class="line"></span>
-                <span>{{# i18n }}Place / date{{/ i18n}}</span>
-            </td>
-            <td>
-                <span class="line"></span>
-                <span>{{# i18n }}Signature / Stamp{{/ i18n}}</span>
-            </td>
-        </tr>
-    </table>
-{{/parameter.printAcceptance_Y}}
-<!-- end signature -->
 
 </body>
 </html>
